@@ -15,6 +15,14 @@ class Controller {
             next(err);
         }
     }
+
+    static listProducts(req, res, next) {
+        try {
+            res.send('produc listx')
+        } catch (err) {
+            next(err);
+        }
+    }
 }
 
 module.exports = Controller;

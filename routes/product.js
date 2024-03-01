@@ -13,5 +13,6 @@ router.post('/upload', uploadConfig.single('attachment'), async (req, res, next)
 });
 
 router.post('/', ProductController.createProduct);
+router.get('/', ProductController.listProducts);
 
 module.exports = router;
