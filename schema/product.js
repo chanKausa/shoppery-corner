@@ -19,4 +19,6 @@ const ProductSchema = new Schema({
     brand: String,
 }, schemaOptions);
 
+ProductSchema.index({ title: 'text' }, { name: 'textIndex' });
+
 module.exports = ProductSchema;

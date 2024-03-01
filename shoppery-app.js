@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-require('dotenv').config()
+require('dotenv').config();
 const App = express();
 
 const router = require('./routes');
@@ -23,6 +23,10 @@ App.use(bodyParser.urlencoded({ extended: true }));
 
 App.use('/api', router);
 
+App.use((err, req, res, next) => {
+    res.sendStatus(500);
+});
+
 
 // eslint-disable-next-line no-undef
 const server = App.listen(process.env.PORT, () => {
@@ -30,7 +34,6 @@ const server = App.listen(process.env.PORT, () => {
     console.log('App is listening to ' + process.env.PORT)
 });
 server.on('connection', (socket) => {
-    console.log(socket);
     // eslint-disable-next-line no-undef
     socket.setTimeout(Number(process.env.SOCKET_TIMEOUT));
 })
